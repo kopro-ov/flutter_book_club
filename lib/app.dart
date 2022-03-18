@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
+import 'book_club_list_tab.dart';
+import 'search_tab.dart';
+import 'mypage.dart';
+
 class CupertinoStoreApp extends StatelessWidget {
   const CupertinoStoreApp({Key? key}) : super(key: key);
 
@@ -23,11 +27,50 @@ class CupertinoStoreHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('Cupertino Store'),
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.home),
+            label: 'Books',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.shopping_cart),
+            label: 'MyPage',
+          ),
+        ],
       ),
-      child: SizedBox(),
+      tabBuilder: (context, index) {
+        late final CupertinoTabView returnValue;
+        switch (index) {
+          case 0:
+            returnValue = CupertinoTabView(builder: (context) {
+              return const CupertinoPageScaffold(
+                child: BookClubListTab(),
+              );
+            });
+            break;
+          case 1:
+            returnValue = CupertinoTabView(builder: (context) {
+              return const CupertinoPageScaffold(
+                child: SearchTab(),
+              );
+            });
+            break;
+          case 2:
+            returnValue = CupertinoTabView(builder: (context) {
+              return const CupertinoPageScaffold(
+                child: MyPageTab(),
+              );
+            });
+            break;
+        }
+        return returnValue;
+      },
     );
   }
 }
