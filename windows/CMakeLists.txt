@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(flutter_book_club LANGUAGES CXX)
+project(book_club LANGUAGES CXX)
 
-set(BINARY_NAME "flutter_book_club")
+set(BINARY_NAME "book_club")
 
 cmake_policy(SET CMP0063 NEW)
 

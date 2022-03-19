@@ -1,6 +1,6 @@
 {
-    "name": "flutter_book_club",
-    "short_name": "flutter_book_club",
+    "name": "book_club",
+    "short_name": "book_club",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

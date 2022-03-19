@@ -1,4 +1,4 @@
-package com.example.flutter_book_club
+package com.example.book_club
 
 import io.flutter.embedding.android.FlutterActivity
 
