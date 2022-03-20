@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'home.dart';
+import 'book_club.dart';
+import 'mypage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -26,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var _index = 0;
+  var _pages = [Home(), BookClub(), MyPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        body: Center(
-          child: Text(
-            '$_index 페이지',
-            style: const TextStyle(fontSize: 40),
-          ),
-        ),
+        body: _pages[_index],
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
             setState(() {
