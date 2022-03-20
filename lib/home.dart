@@ -2,6 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+final List imgList = [
+  {
+    'src':
+        'https://bookthumb-phinf.pstatic.net/cover/208/777/20877727.jpg?type=m1&udate=20220320',
+    'name': '',
+  },
+  {
+    'src':
+        'https://bookthumb-phinf.pstatic.net/cover/205/546/20554603.jpg?type=m1&udate=20220320',
+    'name': ''
+  },
+  {
+    'src':
+        'https://bookthumb-phinf.pstatic.net/cover/207/909/20790919.jpg?type=m1&udate=20220320',
+    'name': ''
+  },
+];
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -41,23 +59,61 @@ class Home extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 10.0),
         padding: EdgeInsets.all(20),
         color: Colors.white,
-        child: CarouselSlider(
-          options: CarouselOptions(height: 300.0),
-          items: [1, 2, 3, 4, 5].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(color: Colors.amber),
-                    child: Text(
-                      'text $i',
-                      style: TextStyle(fontSize: 16.0),
-                    ));
-              },
-            );
-          }).toList(),
-        ));
+        child: Column(children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                '내 도서',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+              ),
+              Icon(CupertinoIcons.arrow_right),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          CarouselSlider(
+              options: CarouselOptions(height: 112.0, viewportFraction: 0.3),
+              items: imgList
+                  .map((item) => Container(
+                        child: Container(
+                          margin: EdgeInsets.all(5.0),
+                          child: ClipRRect(
+                              child: Stack(
+                            children: <Widget>[
+                              Image.network(item['src'], fit: BoxFit.cover),
+                              Positioned(
+                                bottom: 0.0,
+                                left: 0.0,
+                                right: 0.0,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color.fromARGB(200, 0, 0, 0),
+                                        Color.fromARGB(0, 0, 0, 0)
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    '${item['name']}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )),
+                        ),
+                      ))
+                  .toList()),
+        ]));
   }
 
   //하단
