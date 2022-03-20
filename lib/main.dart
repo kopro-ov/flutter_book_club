@@ -37,6 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           backgroundColor: Colors.white,
           centerTitle: false,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                CupertinoIcons.search,
+                color: Colors.black,
+              ),
+              onPressed: () {},
+            ),
+          ],
         ),
         body: Center(
           child: Text(
