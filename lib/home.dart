@@ -98,6 +98,8 @@ class Home extends StatelessWidget {
                                       end: Alignment.topCenter,
                                     ),
                                   ),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10.0, horizontal: 20.0),
                                   child: Text(
                                     '${item['name']}',
                                     style: TextStyle(
