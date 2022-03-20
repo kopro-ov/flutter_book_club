@@ -52,7 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        body: SingleChildScrollView(child: _pages[_index]),
+        body: SingleChildScrollView(
+            child: Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.all(20.0),
+                child: _pages[_index])),
         backgroundColor: const Color.fromARGB(255, 226, 226, 226),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {

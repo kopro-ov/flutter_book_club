@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
   //상단
   Widget _buildTop() {
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+      margin: EdgeInsets.symmetric(vertical: 10.0),
       padding: EdgeInsets.all(20),
       color: Colors.white,
       child: Column(
@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
   //중간
   Widget _buildMiddle() {
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        margin: EdgeInsets.symmetric(vertical: 10.0),
         padding: EdgeInsets.all(20),
         color: Colors.white,
         child: CarouselSlider(
@@ -63,7 +63,7 @@ class Home extends StatelessWidget {
   //하단
   Widget _buildBottom() {
     return Container(
-      margin: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+      margin: EdgeInsets.symmetric(vertical: 10.0),
       padding: EdgeInsets.all(20),
       color: Colors.white,
       child: Column(
