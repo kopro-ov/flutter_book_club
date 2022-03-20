@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -7,14 +8,62 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[_buildTop()],
+      children: <Widget>[_buildTop(), _buildMiddle(), _buildBottom()],
     );
   }
 
   //상단
   Widget _buildTop() {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+      padding: EdgeInsets.all(20),
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                '북클럽 바로가기',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+              ),
+              Icon(CupertinoIcons.arrow_right),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  //중간
+  Widget _buildMiddle() {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        padding: EdgeInsets.all(20),
+        color: Colors.white,
+        child: CarouselSlider(
+          options: CarouselOptions(height: 300.0),
+          items: [1, 2, 3, 4, 5].map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(color: Colors.amber),
+                    child: Text(
+                      'text $i',
+                      style: TextStyle(fontSize: 16.0),
+                    ));
+              },
+            );
+          }).toList(),
+        ));
+  }
+
+  //하단
+  Widget _buildBottom() {
+    return Container(
+      margin: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
       padding: EdgeInsets.all(20),
       color: Colors.white,
       child: Column(
