@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'home.dart';
 import 'book_club.dart';
 import 'mypage.dart';
+import 'search.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 CupertinoIcons.search,
                 color: Colors.black,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Search()),
+                );
+              },
             ),
           ],
         ),
