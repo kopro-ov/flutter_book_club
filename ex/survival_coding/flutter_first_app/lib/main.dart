@@ -33,21 +33,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Hello World'),
-      ),
-      body: Text(
-        _text,
-        style: TextStyle(fontSize: 40),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _text = 'world';
-          });
-        },
-        child: Icon(Icons.touch_app),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Hello World'),
+        ),
+        body: Container(
+          color: Colors.red,
+          width: 100,
+          height: 100,
+        ));
   }
 }
