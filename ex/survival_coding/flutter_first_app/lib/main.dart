@@ -36,10 +36,16 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Hello World'),
         ),
-        body: ListView.separated(
-          itemBuilder: (items, index) => Text('$index'),
-          separatorBuilder: (items, index) => Divider(),
-          itemCount: items.length,
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('홈으로'),
+              subtitle: Text('sub title'),
+              isThreeLine: true,
+              trailing: Icon(Icons.navigate_next),
+            ),
+          ],
         ));
   }
 }
