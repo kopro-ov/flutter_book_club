@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _text = 'Hello';
+  final items = List.generate(100, (i) => i).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Hello World'),
         ),
-        body: Container(
-          color: Colors.red,
-          width: 100,
-          height: 100,
+        body: SingleChildScrollView(
+          child: ListBody(children: items.map((i) => Text('$i')).toList()),
         ));
   }
 }
