@@ -36,74 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Hello World'),
         ),
-        body: ListView(
-          scrollDirection: Axis.vertical,
-          cacheExtent: 100.0,
-          //reverse: true,
-          //physics: NeverScrollableScrollPhysics(),
-          addAutomaticKeepAlives: false,
-          children: <Widget>[
-            Container(
-              height: 200,
-              color: Colors.amber[600],
-              child: const Center(child: Text('Entry A')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[600],
-              child: const Center(child: Text('Entry A')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
-            Container(
-              height: 50,
-              color: Colors.amber[600],
-              child: const Center(child: Text('Entry A')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[600],
-              child: const Center(child: Text('Entry A')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 200,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
-          ],
+        body: ListView.builder(
+          itemBuilder: (items, index) => Text('$index'),
         ));
   }
 }
