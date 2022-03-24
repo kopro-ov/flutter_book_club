@@ -32,25 +32,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 3,
+      child: Scaffold(
         appBar: AppBar(
-          title: Text('Hello World'),
+          title: const Text('TabBar Widget'),
+          bottom: const TabBar(
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.cloud_outlined),
+              ),
+              Tab(
+                icon: Icon(Icons.beach_access_sharp),
+              ),
+              Tab(
+                icon: Icon(Icons.brightness_5_sharp),
+              ),
+            ],
+          ),
         ),
-        body: PageView(
-          /// [PageView.scrollDirection] defaults to [Axis.horizontal].
-          /// Use [Axis.vertical] to scroll vertically.
-          controller: controller,
-          children: const <Widget>[
+        body: const TabBarView(
+          children: <Widget>[
             Center(
-              child: Text('First Page'),
+              child: Text("It's cloudy here"),
             ),
             Center(
-              child: Text('Second Page'),
+              child: Text("It's rainy here"),
             ),
             Center(
-              child: Text('Third Page'),
-            )
+              child: Text("It's sunny here"),
+            ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
