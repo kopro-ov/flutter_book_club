@@ -36,16 +36,16 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Hello World'),
         ),
-        body: ListView(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('홈으로'),
-              subtitle: Text('sub title'),
-              isThreeLine: true,
-              trailing: Icon(Icons.navigate_next),
-            ),
-          ],
-        ));
+        body: GridView.count(
+            crossAxisCount: 4,
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            childAspectRatio: 1.0,
+            children: List.generate(items.length, (index) {
+              return Container(
+                color: Colors.blue,
+                child: Text("$index"),
+              );
+            })));
   }
 }
