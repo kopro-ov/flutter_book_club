@@ -36,8 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Hello World'),
         ),
-        body: ListView.builder(
+        body: ListView.separated(
           itemBuilder: (items, index) => Text('$index'),
+          separatorBuilder: (items, index) => Divider(),
+          itemCount: items.length,
         ));
   }
 }
