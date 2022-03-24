@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final items = List.generate(100, (i) => i).toList();
+  final PageController controller = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +36,21 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Hello World'),
         ),
-        body: GridView.count(
-            crossAxisCount: 4,
-            crossAxisSpacing: 5.0,
-            mainAxisSpacing: 5.0,
-            childAspectRatio: 1.0,
-            children: List.generate(items.length, (index) {
-              return Container(
-                color: Colors.blue,
-                child: Text("$index"),
-              );
-            })));
+        body: PageView(
+          /// [PageView.scrollDirection] defaults to [Axis.horizontal].
+          /// Use [Axis.vertical] to scroll vertically.
+          controller: controller,
+          children: const <Widget>[
+            Center(
+              child: Text('First Page'),
+            ),
+            Center(
+              child: Text('Second Page'),
+            ),
+            Center(
+              child: Text('Third Page'),
+            )
+          ],
+        ));
   }
 }
