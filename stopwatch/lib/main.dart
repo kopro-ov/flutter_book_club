@@ -29,6 +29,31 @@ class StopWatchPage extends StatefulWidget {
 class _StopWatchPageState extends State<StopWatchPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('StopWatch'),
+      ),
+      body: _buildBody(),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 50.0,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() {
+          _clickButtton();
+        }),
+        child: Icon(Icons.play_arrow),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
   }
 }
+
+//내용
+Widget _buildBody() {
+  return Container();
+}
+
+//시작 또는 일시정지 버튼
+void _clickButtton() {}
