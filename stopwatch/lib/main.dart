@@ -42,8 +42,19 @@ class _StopWatchPageState extends State<StopWatchPage> {
 
   @override
   void disponse() {
-    _timer?.cancel();
+    _timer.cancel();
     super.dispose();
+  }
+
+  //시작 또는 일시정지 버튼
+  void _clickButtton() {
+    _isRunning = !_isRunning;
+
+    if (_isRunning) {
+      _start();
+    } else {
+      _pause();
+    }
   }
 
   @override
@@ -62,12 +73,16 @@ class _StopWatchPageState extends State<StopWatchPage> {
         onPressed: () => setState(() {
           _clickButtton();
         }),
-        child: Icon(Icons.play_arrow),
+        child: _isRunning ? Icon(Icons.pause) : Icon(Icons.play_arrow),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
+
+void _pause() {}
+
+void _start() {}
 
 //내용
 Widget _buildBody() {
@@ -120,6 +135,3 @@ Widget _buildBody() {
     ),
   );
 }
-
-//시작 또는 일시정지 버튼
-void _clickButtton() {}
