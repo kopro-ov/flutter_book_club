@@ -69,7 +69,16 @@ class _StopWatchPageState extends State<StopWatchPage> {
     }));
   }
 
-//내용
+  void _reset() {
+    setState(() {
+      _isRunning = false;
+      _timer.cancel();
+      _lapTimes.clear();
+      _time = 0;
+    });
+  }
+
+  //내용
   Widget _buildBody() {
     var sec = _time ~/ 100;
     var hundredth = '${_time % 100}'.padLeft(2, '0');
@@ -106,7 +115,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
               bottom: 10,
               child: FloatingActionButton(
                 backgroundColor: Colors.deepOrange,
-                onPressed: () {},
+                onPressed: _reset,
                 child: Icon(Icons.rotate_left),
               ),
             ),
