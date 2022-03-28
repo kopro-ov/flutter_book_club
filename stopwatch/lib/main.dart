@@ -57,6 +57,18 @@ class _StopWatchPageState extends State<StopWatchPage> {
     }
   }
 
+  void _pause() {
+    _timer.cancel();
+  }
+
+  void _start() {
+    _timer = Timer.periodic(Duration(milliseconds: 10), ((timer) {
+      setState(() {
+        _time++;
+      });
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,10 +91,6 @@ class _StopWatchPageState extends State<StopWatchPage> {
     );
   }
 }
-
-void _pause() {}
-
-void _start() {}
 
 //내용
 Widget _buildBody() {
