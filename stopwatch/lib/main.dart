@@ -78,6 +78,10 @@ class _StopWatchPageState extends State<StopWatchPage> {
     });
   }
 
+  void _recordLapTime(String time) {
+    _lapTimes.insert(0, '${_lapTimes.length + 1} - $time');
+  }
+
   //내용
   Widget _buildBody() {
     var sec = _time ~/ 100;
@@ -123,7 +127,11 @@ class _StopWatchPageState extends State<StopWatchPage> {
               right: 10,
               bottom: 10,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _recordLapTime('$sec.$hundredth');
+                  });
+                },
                 child: Text('랩타입'),
               ),
             )
