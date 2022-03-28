@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +30,22 @@ class StopWatchPage extends StatefulWidget {
 }
 
 class _StopWatchPageState extends State<StopWatchPage> {
+  //타이머
+  late Timer _timer;
+
+  //0.01초 마다 1씩 증가시킬 정수형 변수
+  var _time = 0;
+  //현재 시작 상태를 나타낼 불리언 변수
+  var _isRunning = false;
+
+  List<String> _lapTimes = [];
+
+  @override
+  void disponse() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
