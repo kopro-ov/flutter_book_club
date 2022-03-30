@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/models/todo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +28,19 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
+  //할 일 목록을 저장할 리스트
+  final _items = <Todo>[];
+
+  //할 일 문자열 조작을 위한 컨트롤러
+  var _todoController = TextEditingController();
+
+  @override
+  void dispose() {
+    //사용이 끝ㅌ나면 해제
+    _todoController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
