@@ -47,7 +47,25 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: AppBar(
         title: Text('남은 할일'),
       ),
-      body: Container(),
+      body: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: [
+                Expanded(
+                    child: TextField(
+                  controller: _todoController,
+                )),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('추가'),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
