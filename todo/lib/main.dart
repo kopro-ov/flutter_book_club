@@ -50,7 +50,7 @@ class _TodoListPageState extends State<TodoListPage> {
       body: Padding(
         padding: EdgeInsets.all(10.0),
         child: Column(
-          children: <Widget>[
+          children: [
             Row(
               children: [
                 Expanded(
@@ -63,6 +63,10 @@ class _TodoListPageState extends State<TodoListPage> {
                 )
               ],
             ),
+            Expanded(
+                child: ListView(
+              children: <Widget>[],
+            ))
           ],
         ),
       ),
