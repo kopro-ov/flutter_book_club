@@ -41,6 +41,28 @@ class _TodoListPageState extends State<TodoListPage> {
     super.dispose();
   }
 
+  //할 일 추가
+  void _addTodo(Todo todo) {
+    setState(() {
+      _items.add(todo);
+      _todoController.text = '';
+    });
+  }
+
+  //할 일 삭제 메서드
+  void _deleteTodo(Todo todo) {
+    setState(() {
+      _items.remove(todo);
+    });
+  }
+
+  //할 일 완료/미완료 메서드
+  void _toggleTodo(Todo todo) {
+    setState(() {
+      todo.isDone = !todo.isDone;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
