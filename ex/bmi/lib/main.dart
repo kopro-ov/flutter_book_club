@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '폼 검증 데모',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -29,6 +29,9 @@ class MyCustomForm extends StatefulWidget {
 
 class _MyCustomFormState extends State<MyCustomForm> {
   final myController = TextEditingController();
+
+  //form위젯에 유니크한 키값을 부여하고 검증시 사용
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -49,24 +52,21 @@ class _MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Text Input 연습"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              onChanged: (text) {
-                print("첫 번째 text field: $text");
-              },
-            ),
-            TextField(
-              controller: myController,
-            )
-          ],
+        appBar: AppBar(
+          title: Text("Text Input 연습"),
         ),
-      ),
-    );
+        body: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                validator: (String? value) {
+                  return (value != null) ? '글자를 입력하세요.' : null;
+                },
+              )
+            ],
+          ),
+        ));
   }
 }
