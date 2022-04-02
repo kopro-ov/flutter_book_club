@@ -61,10 +61,25 @@ class _MyCustomFormState extends State<MyCustomForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                validator: (String? value) {
-                  return (value != null) ? '글자를 입력하세요.' : null;
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '글자를 입력하세요.';
+                  }
+                  return null;
                 },
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  child: Text('검증'),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text('검증 완료')));
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ));
