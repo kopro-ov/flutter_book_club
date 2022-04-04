@@ -3,16 +3,18 @@ import 'package:camera/camera.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'display_picture_screen.dart';
+
 //사용자가 주어진 카메라를 사용하여 사진을 찍을 수 있는 화면
-class TakePictureScrren extends StatefulWidget {
+class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
-  const TakePictureScrren({Key? key, required this.camera}) : super(key: key);
+  const TakePictureScreen({Key? key, required this.camera}) : super(key: key);
 
   @override
-  State<TakePictureScrren> createState() => _TakePictureScrrenState();
+  State<TakePictureScreen> createState() => _TakePictureScreenState();
 }
 
-class _TakePictureScrrenState extends State<TakePictureScrren> {
+class _TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
 
@@ -62,7 +64,15 @@ class _TakePictureScrrenState extends State<TakePictureScrren> {
               '${DateTime.now()}.png',
             );
 
-            await _controller.takePicture(path);
+            await _controller.takePicture();
+            //저장경로 로그 출력
+            print(path);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DisplayPictureScreen(imagePath: path),
+              ),
+            );
           } catch (e) {
             //에러 발생 시 콘솔에 에러 로그
             print(e);
